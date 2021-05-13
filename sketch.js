@@ -23,7 +23,6 @@ var Kentrosaurus, kentrosaurusImage;
 var Torosaurus, torosaurusImage;
 
 var gameState = 0;
-var healthbar, healthbar2, healthbarImage;
 
 function preload(){
   iguanodonImage = loadImage("DinosaursImages/Iguanodon.jpg");
@@ -49,8 +48,7 @@ function preload(){
   suchomimusImage = loadImage("DinosaursImages/Suchomimus.jpg");
   torosaurusImage = loadImage("DinosaursImages/Torosaurus.jpg");
   kentrosaurusImage = loadImage("DinosaursImages/Kentrosaurus.jpg");
-  
-  healthbarImage = loadImage("download.png");
+ 
 }
 
 function setup() {
@@ -91,7 +89,7 @@ function setup() {
   Stegosaurus.scale = 0.1;
   Tyrannosaurus = createSprite(1150,110,40,40);
   Tyrannosaurus.addImage(tyrannosaurusImage);
-  Tyrannosaurus.scale = 0.1;
+  Tyrannosaurus.scale = 0.15;
   Amargasaurus = createSprite(1050,110,40,40);
   Amargasaurus.addImage(amargasaurusImage);
   Amargasaurus.scale = 0.1;
@@ -127,14 +125,7 @@ function setup() {
   Torosaurus.scale = 0.1;
 
   
-
-  if(gameState === 1){
-    background("pink");
-    healthbar = createSprite(250,100,50,50);
-  }
 }
-  
-
 
 function draw() {
   background("cyan");  
@@ -244,13 +235,17 @@ function draw() {
   fill("blue");
   text("Click the RIGHT ARROW to start playing!", 400,350);
 
-  
+
+  if(keyDown (RIGHT_ARROW)){
+    gameState = 1;
+  }
+
+  if(keyDown (LEFT_ARROW)){
+    gameState = 0;
+  }
+
+  if(gameState === 1){
+    background("pink");
+  }
 }
 
-if(keyDown (RIGHT_ARROW)){
-  gameState = 1;
-}
-
-if(keyDown (LEFT_ARROW)){
-  gameState = 0;
-}
